@@ -13,8 +13,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hritik Munde | DevOps Engineer",
-  description: "Portfolio of Hritik Munde, a DevOps Engineer specializing in Cloud Infrastructure, Automation, and Security.",
+  title: "Hritik Munde | DevOps Engineer & Cloud Architect",
+  description: "Portfolio of Hritik Munde, a DevOps Engineer specializing in AWS, Kubernetes, Terraform, and Cloud Security. View projects, skills, and experience.",
+  keywords: ["DevOps", "Cloud Engineer", "AWS", "Kubernetes", "Terraform", "Docker", "CI/CD", "Hritik Munde", "Portfolio"],
+  openGraph: {
+    title: "Hritik Munde | DevOps Engineer",
+    description: "Building reliable infrastructure and automating the boring stuff.",
+    type: "website",
+    locale: "en_US",
+  },
 };
 
 export default function RootLayout({
