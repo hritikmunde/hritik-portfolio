@@ -1,9 +1,9 @@
-import { Github, Linkedin, Mail, Terminal, Cloud, Server, Shield, Database, Code, Monitor, Globe, Cpu } from "lucide-react";
+import { Github, Linkedin, Mail, Cloud, Server, Shield, Database, Code, Monitor, Cpu, Lock, Layers } from "lucide-react";
 
 export const personalInfo = {
   name: "Hritik Munde",
-  role: "DevOps Engineer",
-  bio: "Building reliable infrastructure and automating the boring stuff. Passionate about cloud native technologies, distributed systems, and security.",
+  role: "DevOps & Platform Engineer",
+  bio: "Platform engineer specializing in cloud-native infrastructure, GitOps, and DevSecOps. Building self-service IDPs, zero-trust CI/CD pipelines, and production-grade observability platforms across AWS, Azure, and Kubernetes.",
   email: "hritik16munde@gmail.com",
   socials: {
     github: "https://github.com/hritikmunde",
@@ -12,132 +12,145 @@ export const personalInfo = {
 };
 
 export const skills = [
-  { 
-    name: "Cloud Infrastructure", 
-    icon: Cloud, 
-    items: ["AWS (EC2, S3, Lambda, VPC, IAM)", "Azure", "Render", "DigitalOcean"] 
+  {
+    name: "CI/CD & GitOps",
+    icon: Cpu,
+    items: ["GitHub Actions", "Jenkins", "GitLab CI", "CircleCI", "ArgoCD", "Azure DevOps", "Progressive Delivery"]
   },
-  { 
-    name: "Containerization & Orchestration", 
-    icon: Server, 
-    items: ["Docker", "Kubernetes", "Helm", "Docker Compose", "Podman"] 
+  {
+    name: "Containers & Orchestration",
+    icon: Server,
+    items: ["Docker", "Kubernetes (EKS, AKS, GKE)", "Helm", "Kustomize", "Microservices", "Multi-cluster management"]
   },
-  { 
-    name: "IaC & Configuration", 
-    icon: Terminal, 
-    items: ["Terraform", "Ansible", "CloudFormation", "Bicep"] 
+  {
+    name: "Cloud & IaC",
+    icon: Cloud,
+    items: ["AWS (EC2, S3, IAM, VPC, RDS)", "Azure", "GCP", "Terraform", "Crossplane", "Ansible"]
   },
-  { 
-    name: "CI/CD & DevOps Tools", 
-    icon: Cpu, 
-    items: ["Jenkins", "GitHub Actions", "GitLab CI", "ArgoCD", "Git"] 
+  {
+    name: "Observability & Reliability",
+    icon: Monitor,
+    items: ["Prometheus", "Grafana", "Loki", "OpenTelemetry", "Datadog", "Dynatrace", "Istio Service Mesh", "SLO/Error Budgeting"]
   },
-  { 
-    name: "Observability & Monitoring", 
-    icon: Monitor, 
-    items: ["Prometheus", "Grafana", "ELK Stack", "Datadog", "CloudWatch"] 
+  {
+    name: "Security & DevSecOps",
+    icon: Lock,
+    items: ["OPA Gatekeeper", "Cosign", "SBOM (Syft)", "Trivy", "Snyk", "Litmus Chaos", "HashiCorp Vault"]
   },
-  { 
-    name: "Backend & Scripting", 
-    icon: Code, 
-    items: ["Python", "Go", "Bash/Shell", "JavaScript/TypeScript"] 
+  {
+    name: "Deployment Strategies",
+    icon: Layers,
+    items: ["Blue-Green", "Canary", "Rolling Updates", "Automated Rollbacks", "Self-Healing Infrastructure"]
   },
-  { 
-    name: "Networking & Security", 
-    icon: Shield, 
-    items: ["Nginx", "Traefik", "Firewalls", "IAM", "VPN", "SSL/TLS"] 
+  {
+    name: "Languages & Scripting",
+    icon: Code,
+    items: ["Python (Django, FastAPI)", "Go", "Java", "TypeScript", "Bash/Shell", "SQL"]
   },
-  { 
-    name: "Databases & Storage", 
-    icon: Database, 
-    items: ["PostgreSQL", "MongoDB", "Redis", "Etcd", "S3"] 
+  {
+    name: "Networking & Security",
+    icon: Shield,
+    items: ["Nginx", "Traefik", "Firewalls", "IAM", "VPN", "SSL/TLS"]
+  },
+  {
+    name: "Databases & Storage",
+    icon: Database,
+    items: ["PostgreSQL", "MongoDB", "Redis", "Etcd", "S3"]
   },
 ];
 
 export const projects = [
   {
-    title: "Automated Honeypot Farm",
-    description: "A Kubernetes-native honeypot deployment system designed to capture and analyze automated network attacks using multiple personas (Web Server, Edge Router, Domain Controller).",
+    title: "Shipyard IDP — Internal Developer Platform",
+    description: "A self-service Internal Developer Platform built on Backstage that reduces cloud-native service provisioning from 3-day tickets to under 3 minutes, with full GitOps automation and observability.",
     features: [
-      "Deployed on AWS EKS using Terraform for Infrastructure as Code.",
-      "Implemented centralized logging and visualization with Loki, Promtail, and Grafana.",
-      "Secured with NetworkPolicies and AWS Security Groups for strict isolation.",
-      "Automated CI/CD pipeline using GitHub Actions for container builds and deployment."
+      "Backstage scaffolding templates auto-provision GitHub repos, Actions CI/CD pipelines, and AWS RDS databases via Crossplane on every developer request.",
+      "ArgoCD App of Apps GitOps pattern for zero-touch Kubernetes deployments across microservices.",
+      "Full observability via Prometheus ServiceMonitors and Grafana dashboards.",
+      "One-command Terraform automation bootstrapped on Kind (local) and EKS (cloud)."
     ],
-    tags: ["Kubernetes", "AWS EKS", "Terraform", "Grafana/Loki", "Cowrie"],
-    link: "https://github.com/hritikmunde/honey-pot-farm",
+    tags: ["Backstage", "Crossplane", "ArgoCD", "Terraform", "Kubernetes", "Prometheus"],
+    link: "https://github.com/hritikmunde/shipyard-idp",
   },
   {
-    title: "Distributed Logging & Alerting",
-    description: "A lightweight, real-time logging pipeline for Kubernetes that captures error logs via Fluent Bit, bridges them to an Etcd cluster, and triggers alerts.",
+    title: "Zero-Trust CI/CD Supply Chain Pipeline",
+    description: "A hardened software supply chain pipeline that blocks 100% of unverified images from production Kubernetes using policy enforcement, image signing, and automated vulnerability scanning.",
     features: [
-      "Built custom Go microservices (Bridge & Watcher) for log processing and alerting.",
-      "Utilized Fluent Bit for efficient, low-overhead log forwarding and filtering.",
-      "Leveraged Etcd for consistent, distributed storage of alert states.",
-      "Designed for high availability and namespace-agnostic deployment."
+      "OPA Gatekeeper admission policies reject unsigned or unregistered container images at deploy time.",
+      "SBOMs generated with Syft and images signed with Cosign per build for supply chain integrity.",
+      "Trivy vulnerability scanning integrated into GitHub Actions to surface critical CVEs before merge.",
+      "End-to-end zero-trust enforcement from commit to production deployment."
     ],
-    tags: ["Go", "Kubernetes", "Etcd", "Fluent Bit", "Distributed Systems"],
-    link: "https://github.com/hritikmunde/distributed-etcd-logger",
+    tags: ["GitHub Actions", "Cosign", "Syft", "OPA Gatekeeper", "Trivy", "Kubernetes"],
   },
   {
-    title: "Library Catalog Monolith",
-    description: "A full-stack Spring Boot application demonstrating modern DevOps practices including containerization, CI/CD, and cloud deployment.",
+    title: "Self-Healing Kubernetes Platform",
+    description: "An automated remediation platform that detects failures and rolls back to healthy releases without human intervention, validated under real failure conditions.",
     features: [
-      "Containerized Java Spring Boot application using Docker.",
-      "Implemented secure role-based authentication and CRUD operations.",
-      "Automated build and test pipelines via GitHub Actions.",
-      "Deployed to Render cloud platform with production-ready configuration."
+      "Prometheus detects error rate threshold breaches, AlertManager fires a webhook, and ArgoCD automatically rolls back to the last healthy release.",
+      "Validated under real failure conditions by injecting pod crashes and traffic spikes.",
+      "Confirmed sub-5-minute automated recovery with tuned SLI alert thresholds.",
+      "Grafana burn-rate dashboards used to observe and tune remediation behavior."
     ],
-    tags: ["Java Spring Boot", "Docker", "CI/CD", "Render", "PostgreSQL"],
-    link: "https://github.com/hritikmunde/library_catalog",
+    tags: ["Kubernetes", "Prometheus", "AlertManager", "ArgoCD", "Grafana", "Python"],
   },
   {
-    title: "Scalable Thumbnail Generator",
-    description: "A production-style, cloud-native system for parallel image processing using Kubernetes HPA and custom metrics.",
+    title: "FinOps Governance Agent",
+    description: "An automated cloud cost governance agent that detects spend overruns, identifies cost drivers, and delivers real-time breakdowns to engineering teams via Slack.",
     features: [
-      "Architected a scalable pipeline with Flask, Celery, and Redis for asynchronous task processing.",
-      "Implemented Horizontal Pod Autoscaling (HPA) based on custom Redis queue depth metrics.",
-      "Provisioned AWS EKS infrastructure using Terraform.",
-      "Integrated Prometheus and Grafana for real-time monitoring of worker performance."
+      "Python agent detects daily forecast overruns, identifies top cost drivers, and scans for untagged resources.",
+      "Automated Slack notifications with per-service AWS cost breakdowns.",
+      "CloudWatch budget alerts and tagging policy enforcement to reduce unplanned cloud spend.",
+      "Built on AWS Cost Explorer and Boto3 with Lambda-based scheduling."
     ],
-    tags: ["Kubernetes HPA", "Terraform", "AWS EKS", "Python/Celery", "Redis"],
-    link: "https://github.com/hritikmunde/parallel-thumbnail-generation",
+    tags: ["Python", "AWS Cost Explorer", "Boto3", "Slack API", "CloudWatch", "Lambda"],
+  },
+  {
+    title: "GitOps Multi-Environment Pipeline",
+    description: "A structured dev/staging/prod promotion pipeline using ArgoCD ApplicationSets with automated health gates and full Git audit trail across all environments.",
+    features: [
+      "Code merged to main auto-deploys to dev, passes automated health gates, promotes to staging, then requires manual approval for production.",
+      "Automatic rollback on failed health checks with Kustomize per-environment overlays.",
+      "Full Git audit trail for every environment change eliminates manual deployment coordination.",
+      "ArgoCD ApplicationSets drive promotion logic across 3 environments."
+    ],
+    tags: ["ArgoCD", "ApplicationSets", "Kustomize", "GitHub Actions", "Kubernetes"],
   },
 ];
 
 export const experience = [
   {
-    role: "DevOps Engineer",
+    role: "Graduate Teaching Assistant (Part-time)",
+    company: "Indiana University, Dept. of Computer Science",
+    location: "Bloomington, IN",
+    period: "Aug 2025 - Present",
+    description: [
+      "Spearheaded a self-service Linux sandbox environment for 100+ students using automated shell scripts and network isolation, reducing setup overhead for instructors by 20 hours per week.",
+      "Engineered an automated grading pipeline using Shell scripts and Autograder to validate code submissions, creating a CI/CD-like feedback loop that reduced grading turnaround time by 40%."
+    ]
+  },
+  {
+    role: "DevOps Engineer — Infrastructure Platform",
     company: "UST",
-    location: "Pune, MH, India",
+    location: "Pune, India",
     period: "Jul 2022 - Jul 2024",
     description: [
-      "Redesigned GitLab CI/CD pipelines to run lightweight jobs in parallel and reduce docker cache buildup on the runner machine, cutting the average pipeline build time by 13 minutes.",
-      "Provisioned and automated Kubernetes clusters using Terraform for multiple environments, reducing infrastructure setup time by 40% and increasing deployment speed by 30%.",
-      "Built Docker images for microservices and secured them in private repositories with role-based access, cutting deployment failures by 15% and boosting release confidence.",
-      "Authored and tested disaster recovery runbooks and playbooks, conducting dry runs in simulated environments that reduced recovery time by 90% (from 4 hours to 30 minutes).",
-      "Automated server provisioning, configuration, and patch management for Linux environments using Ansible playbooks, reducing setup time by 60%.",
-      "Implemented monitoring, alerting, and incident response pipelines using Splunk dashboards and Grafana, reducing incident detection time by 40%."
+      "Cut delivery cycles 93% (4hrs to 15min) for 40+ microservices via ArgoCD/Jenkins/Helm GitOps; implemented Blue-Green/Canary for zero-downtime upgrades for a Tier-1 US telecom.",
+      "Reduced MTTR 50% (under 90min) via Prometheus/Grafana/Loki stack; utilized Istio Service Mesh for traffic management and SLI/SLO dashboards to catch 80% of issues before user impact.",
+      "Eliminated 90% configuration drift across 200+ K8s nodes via Ansible/Terraform provisioning; reduced server setup time from hours to 30 minutes.",
+      "Engineered automated DR runbooks, achieving an 87% RTO improvement (4hrs to 30min) and ensuring 100% compliance during quarterly security and enterprise audits.",
+      "Architected migration to Azure (AKS), leveraging HPA and Cluster Autoscalers to handle 30% peak traffic surges without manual intervention.",
+      "Led shift-left security integration of Trivy/SonarQube into CI/CD pipelines, reducing production vulnerabilities by 40% across all cloud-native and microservice environments."
     ]
   },
   {
-    role: "Software Engineering Intern",
+    role: "Software Engineer Intern",
     company: "Tata Motors",
-    location: "Pune, MH, India",
-    period: "Jan 2022 - May 2022",
+    location: "Pune, India",
+    period: "Aug 2021 - May 2022",
     description: [
-      "Constructed comprehensive web application modules demonstrating proficiency in full-stack development methodologies and payment system architecture.",
-      "Crafted PHP CodeIgniter-powered bot for payment receipt generation, streamlining financial documentation processes and eliminating 30% of manual administrative tasks."
-    ]
-  },
-  {
-    role: "Backend Developer Intern",
-    company: "Console Infotech",
-    location: "Pune, MH, India",
-    period: "Jun 2021 - Jul 2021",
-    description: [
-      "Leveraged the Laravel framework, reducing repetitive coding by 50% and accelerating development for website creation.",
-      "Enhanced user management using JetStream Package and Spatie; built custom HTML boilerplates that improved navigation speed for 50+ admin users."
+      "Engineered 3+ production-level Python scripts to automate recurring operational workflows, resulting in a 60% reduction in manual toil for the engineering team.",
+      "Collaborated with the core engineering team to optimize SQL queries and backend API endpoints, improving internal dashboard load times by 25%."
     ]
   }
 ];
@@ -146,14 +159,14 @@ export const education = [
   {
     degree: "Master of Science in Computer Science",
     school: "Indiana University Bloomington",
-    period: "2024 - 2026",
-    description: "Focusing on Cloud Computing, Distributed Systems, and Network Security.",
+    period: "Aug 2024 - May 2026",
+    description: "GPA: 3.9/4. Focusing on Cloud Computing, Distributed Systems, and Network Security.",
   },
   {
     degree: "Bachelor of Technology in Computer Engineering",
     school: "MIT Academy of Engineering, Pune",
-    period: "2018 - 2022",
-    description: "Specialized in Software Development, Database Management, and Network Security.",
+    period: "Aug 2018 - May 2022",
+    description: "GPA: 3.65/4. Specialized in Software Development, Database Management, and Network Security.",
   },
 ];
 
@@ -172,7 +185,7 @@ export const certifications: Certification[] = [
     link: "#"
   },
   {
-    name: "HashiCorp Certified: Terraform Associate (002)",
+    name: "HashiCorp Certified: Terraform Associate (003)",
     issuer: "HashiCorp",
     date: "Issued 2023",
     link: "#"
