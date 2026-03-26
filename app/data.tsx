@@ -116,6 +116,65 @@ export const projects = [
     ],
     tags: ["ArgoCD", "ApplicationSets", "Kustomize", "GitHub Actions", "Kubernetes"],
   },
+  {
+    title: "LLM Inference Platform",
+    description: "Production-grade LLM serving infrastructure on Kubernetes with autoscaling on request queue depth, GitOps deployment, and full observability across GPU replicas.",
+    features: [
+      "Built LLM serving with vLLM on Kubernetes with horizontal pod autoscaling on request queue depth.",
+      "GitOps deployment via ArgoCD with Terraform-provisioned EKS on AWS.",
+      "Implemented deployment health gates and automated rollback triggers.",
+      "Grafana dashboards tracked token throughput, TTFT, and GPU utilization across replicas for data-driven production decisions."
+    ],
+    tags: ["vLLM", "Kubernetes", "ArgoCD", "Prometheus", "Grafana", "Terraform", "GitHub Actions"],
+  },
+  {
+    title: "Automated Honeypot Farm",
+    description: "A Kubernetes-native honeypot deployment system designed to capture and analyze automated network attacks using multiple personas (Web Server, Edge Router, Domain Controller).",
+    features: [
+      "Deployed on AWS EKS using Terraform for Infrastructure as Code.",
+      "Implemented centralized logging and visualization with Loki, Promtail, and Grafana.",
+      "Secured with NetworkPolicies and AWS Security Groups for strict isolation.",
+      "Automated CI/CD pipeline using GitHub Actions for container builds and deployment."
+    ],
+    tags: ["Kubernetes", "AWS EKS", "Terraform", "Grafana/Loki", "Cowrie"],
+    link: "https://github.com/hritikmunde/honey-pot-farm",
+  },
+  {
+    title: "Distributed Logging & Alerting",
+    description: "A lightweight, real-time logging pipeline for Kubernetes that captures error logs via Fluent Bit, bridges them to an Etcd cluster, and triggers alerts.",
+    features: [
+      "Built custom Go microservices (Bridge & Watcher) for log processing and alerting.",
+      "Utilized Fluent Bit for efficient, low-overhead log forwarding and filtering.",
+      "Leveraged Etcd for consistent, distributed storage of alert states.",
+      "Designed for high availability and namespace-agnostic deployment."
+    ],
+    tags: ["Go", "Kubernetes", "Etcd", "Fluent Bit", "Distributed Systems"],
+    link: "https://github.com/hritikmunde/distributed-etcd-logger",
+  },
+  {
+    title: "Library Catalog Monolith",
+    description: "A full-stack Spring Boot application demonstrating modern DevOps practices including containerization, CI/CD, and cloud deployment.",
+    features: [
+      "Containerized Java Spring Boot application using Docker.",
+      "Implemented secure role-based authentication and CRUD operations.",
+      "Automated build and test pipelines via GitHub Actions.",
+      "Deployed to Render cloud platform with production-ready configuration."
+    ],
+    tags: ["Java Spring Boot", "Docker", "CI/CD", "Render", "PostgreSQL"],
+    link: "https://github.com/hritikmunde/library_catalog",
+  },
+  {
+    title: "Scalable Thumbnail Generator",
+    description: "A production-style, cloud-native system for parallel image processing using Kubernetes HPA and custom metrics.",
+    features: [
+      "Architected a scalable pipeline with Flask, Celery, and Redis for asynchronous task processing.",
+      "Implemented Horizontal Pod Autoscaling (HPA) based on custom Redis queue depth metrics.",
+      "Provisioned AWS EKS infrastructure using Terraform.",
+      "Integrated Prometheus and Grafana for real-time monitoring of worker performance."
+    ],
+    tags: ["Kubernetes HPA", "Terraform", "AWS EKS", "Python/Celery", "Redis"],
+    link: "https://github.com/hritikmunde/parallel-thumbnail-generation",
+  },
 ];
 
 export const experience = [
