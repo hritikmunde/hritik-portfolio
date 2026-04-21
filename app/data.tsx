@@ -1,7 +1,7 @@
 import { Github, Linkedin, Mail, Cloud, Server, Shield, Database, Code, Monitor, Cpu, Lock, Layers } from "lucide-react";
 
 export const personalInfo = {
-  name: "Hritik Munde",
+  name: "Hritik Satish Munde",
   role: "DevOps & Platform Engineer",
   bio: "Platform engineer specializing in cloud-native infrastructure, GitOps, and DevSecOps. Building self-service IDPs, zero-trust CI/CD pipelines, and production-grade observability platforms across AWS, Azure, and Kubernetes.",
   email: "hritik16munde@gmail.com",
